@@ -1,0 +1,22 @@
+{
+  "name": "whatsapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "student-server.js",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "g": "^2.0.1",
+    "git": "^0.1.5",
+    "live-server": "^1.2.1",
+    "mongoose": "^5.13.1",
+    "nodemon": "^2.0.9"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node Server\\server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
