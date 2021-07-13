@@ -9,9 +9,11 @@
     "express": "^4.17.1",
     "g": "^2.0.1",
     "git": "^0.1.5",
+    "heroku": "^7.56.1",
     "live-server": "^1.2.1",
     "mongoose": "^5.13.1",
-    "nodemon": "^2.0.9"
+    "nodemon": "^2.0.9",
+    "sli": "^0.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
