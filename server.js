@@ -7,7 +7,7 @@ const Users = require("./users");//because we want a local file, we need to use 
 const Messages = require("./Message");//because we want a local file, we need to use ./
 const Chats=require("./chat");
 
-// Initializing Server
+// Initializing Server  https://git.heroku.com/whatsapp-server-vavik86.git
 const app = express(); // express is a function that returns an instance
 app.use(express.json()); // this makes it easier to process JSON requests
 
@@ -21,6 +21,7 @@ app.use(
   })
 );
 app.use(cookieParser());
+//process.env.WHATSAPP_DB;
 
 //const mongoURL= process.env.WHATSAPP_DB;
 

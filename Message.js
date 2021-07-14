@@ -1,4 +1,3 @@
-const { json } = require("express");
 const mongoose = require("mongoose");
 
 const messageSchema = new mongoose.Schema({
@@ -15,11 +14,7 @@ const messageSchema = new mongoose.Schema({
   picURL: String,
 });
 
-// module.exports.messageSchema = messageSchema;
-
 let Message = mongoose.model("Message", messageSchema);
-
-// User.init(); // when we need to create a new index
 
 module.exports.getAll = (req, res) => {
   Message.find()
@@ -49,10 +44,11 @@ module.exports.getByChat = (req, res) => {
 };
 
 module.exports.createNew = (req, res) => {
+  console.log("BODY: " + JSON.stringify(req.body));
   let message = new Message({
-    author: '60ea1c86b106b13e0c78d898',
-    chat: req.params.id,
-    text: 'test',
+    author: req.body.author || '60e45624cb38804ddcc1546b',
+    chat: req.params.id, // chat id from URL, because we switched the routing
+    text: req.body.text || 'test',
     date: Date.now(),
     picURL: req.body.picURL,
   });
@@ -66,7 +62,7 @@ module.exports.createNew = (req, res) => {
 };
 
 module.exports.update = (req, res) => {
-  User.findById(req.params.id).then((message) => {
+  Message.findById(req.params.id).then((message) => {
     if (message) {
       message.text = req.body.text;
       message.date = Date.now();
@@ -91,7 +87,7 @@ module.exports.update = (req, res) => {
 };
 
 module.exports.delete = (req, res) => {
-  User.findByIdAndRemove(req.params.id)
+  Message.findByIdAndRemove(req.params.id)
     .then((message) => {
       if (message) {
         res.json(message);

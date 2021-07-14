@@ -28,7 +28,7 @@ module.exports.getById = (req, res) => {
   getUserById(req.params.id, res);
 };
 module.exports.getLoggedUserByCookie = (req, res) => {
-  getUserById('60e45624cb38804ddcc1546b', res)
+  getUserById(req.cookies.userId, res);
 };
 
 const getUserById = (userId, res) => {
