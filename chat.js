@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
 
 const chatSchema = new mongoose.Schema({
-  chatName: { type: String,  unique: true },
+  chatName: { type: String, unique: true },
+  picURL: { type: String },
   userIds: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
@@ -12,7 +13,7 @@ const chatSchema = new mongoose.Schema({
 
 let Chats = mongoose.model("Chats", chatSchema);
 
- //Chats.init(); // when we need to create a new index
+//Chats.init(); // when we need to create a new index
 
 module.exports.getAll = (req, res) => {
   let filter = {};
@@ -40,7 +41,8 @@ module.exports.getFriends = (req, res) => {
 module.exports.createNew = (req, res) => {
   let chat = new Chats({
     userIds: req.body.userIds,
-    chatName: req.body.chatName
+    chatName: req.body.chatName,
+    picURL: req.body.picURL
   });
   chat
     .save()

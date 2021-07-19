@@ -44,10 +44,9 @@ module.exports.getByChat = (req, res) => {
 };
 
 module.exports.createNew = (req, res) => {
-  console.log("BODY: " + JSON.stringify(req.body));
   let message = new Message({
     author: req.body.author || '60e45624cb38804ddcc1546b',
-    chat: req.params.id, // chat id from URL, because we switched the routing
+    chat: req.params.id,
     text: req.body.text || 'test',
     date: Date.now(),
     picURL: req.body.picURL,

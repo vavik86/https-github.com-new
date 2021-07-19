@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+
 const userSchema = new mongoose.Schema({
   userName: { type: String, required: true, unique: true },
   phoneNumber: String,
@@ -16,11 +17,13 @@ let User = mongoose.model("User", userSchema);
 
 module.exports.getAll = (req, res) => {
   let filter = {};
-  if (req.body.search) {
-    let regExp = new regExp(req.body.search, "i");
-    filter = { $or: [{ firstName: regExp }, { lastName: regExp }] };
+  if (req.query.search) { 
+    let regEx = new RegExp(req.query.search, "i");
+        filter = { $or: [{ firstName: regEx }, { lastName: regEx }] };
   }
-  User.find()
+
+
+  User.find(filter)
     .then((result) => res.json(result))
 };
 
